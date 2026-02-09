@@ -2,16 +2,16 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "yourdockerhubusername/mynodeapp"
+        DOCKER_IMAGE = "amit6264/docker-nodejs-app"
         EC2_USER = "ec2-user"
-        EC2_HOST = "YOUR_EC2_PUBLIC_IP"
+        EC2_HOST = "13.49.65.253"
     }
 
     stages {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/YOUR_GITHUB_REPO.git'
+                git branch: 'main', url: 'https://github.com/amit6264/Docker-Node.js-application.git'
             }
         }
 
