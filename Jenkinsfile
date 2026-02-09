@@ -27,16 +27,6 @@ pipeline {
             }
         }
 
-        stage('Push to Docker Hub') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub',
-                        usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                    sh "echo $PASS | docker login -u $USER --password-stdin"
-                    sh "docker push ${DOCKER_IMAGE}:latest"
-                }
-            }
-        }
-
         stage('Deploy to EC2') {
             steps {
                 sshagent(['ec2-key']) {
